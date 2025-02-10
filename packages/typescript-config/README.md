@@ -1,4 +1,4 @@
-# @connected/typescript-config
+# @repo/typescript-config
 
 Shared TypeScript configurations for your monorepo.
 
