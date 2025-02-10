@@ -1,0 +1,50 @@
+{
+    "app": {
+        "title": "My Application",
+        "description": "This is a sample application using i18n."
+    },
+    "navigation": {
+        "home": "Home",
+        "about": "About Us",
+        "contact": "Contact",
+        "help": "Help"
+    },
+    "buttons": {
+        "ok": "OK",
+        "cancel": "Cancel",
+        "save": "Save",
+        "submit": "Submit",
+        "delete": "Delete",
+        "edit": "Edit",
+        "login": "Log In",
+        "logout": "Log Out"
+    },
+    "messages": {
+        "welcomeBack": "Welcome back, {{name}}!",
+        "welcomeGuest": "Welcome, Guest!",
+        "success": "Operation completed successfully.",
+        "error": "An error occurred. Please try again.",
+        "loading": "Loading...",
+        "noResults": "No results found.",
+        "notAuthorized": "You are not authorized to perform this action."
+    },
+    "form": {
+        "requiredField": "This field is required.",
+        "invalidEmail": "Please enter a valid email address.",
+        "invalidPhone": "Please enter a valid phone number.",
+        "passwordMismatch": "Passwords do not match.",
+        "minLength": "Minimum length is {{count}} characters.",
+        "maxLength": "Maximum length is {{count}} characters."
+    },
+    "footer": {
+        "copyright": "© {{year}} My Application",
+        "privacyPolicy": "Privacy Policy",
+        "termsOfService": "Terms of Service"
+    },
+    "dialog": {
+        "confirmTitle": "Confirm Action",
+        "confirmMessage": "Are you sure you want to proceed?",
+        "alertTitle": "Notice",
+        "alertMessage": "Please pay attention to the following."
+    }
+}
