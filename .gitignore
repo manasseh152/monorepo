@@ -79,4 +79,4 @@ packages/**/
 
 # Exclude config package
 !packages/eslint-config
-!./packages/typescript-config
+!packages/typescript-config
