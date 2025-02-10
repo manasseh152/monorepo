@@ -1,0 +1,10 @@
+{
+    "recommendations": [
+        "esbenp.prettier-vscode",
+        "lokalise.i18n-ally",
+        "Gruntfuggly.todo-tree",
+        "bradlc.vscode-tailwindcss",
+        "dbaeumer.vscode-eslint",
+        "formulahendry.auto-rename-tag"
+    ]
+}
