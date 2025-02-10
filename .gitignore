@@ -74,9 +74,9 @@ Thumbs.db
 .pnp.*
 
 # Project Specific
-apps/**/
-packages/**/
+# apps/**/
+# packages/**/
 
 # Exclude config package
-!packages/eslint-config
-!packages/typescript-config
+# !packages/eslint-config
+# !packages/typescript-config
