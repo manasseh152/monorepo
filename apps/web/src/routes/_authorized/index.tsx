@@ -18,17 +18,19 @@ function RouteComponent() {
     );
 
     return (
-        <section className="p-4">
+        <section className="flex flex-col p-4">
             <h2 className="text-xl font-bold mb-2">Your Notes</h2>
             <CreateNote />
-            <ul className="flex flex-col gap-4">
-                {notes?.map((note) => (
-                    <li key={note.noteId}>
-                        <h3>{note.title}</h3>
-                        <pre>{note.content}</pre>
-                    </li>
-                ))}
-            </ul>
+            <div className=" overflow-y-auto">
+                <ul className="flex flex-col gap-4">
+                    {notes?.map((note) => (
+                        <li key={note.noteId}>
+                            <h3>{note.title}</h3>
+                            <pre>{note.content}</pre>
+                        </li>
+                    ))}
+                </ul>
+            </div>
         </section>
     );
 }

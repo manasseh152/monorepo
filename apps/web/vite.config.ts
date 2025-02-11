@@ -51,6 +51,7 @@ export default defineConfig({
     },
     /* I prefer to the environment variables in the .env file. */
     server: {
+        allowedHosts: ['localhost', 'local.bitbreeze.nl', 'app.bitbreeze.nl'],
         host: 'localhost',
         port: 5173,
         proxy: {
