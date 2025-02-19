@@ -73,6 +73,9 @@ Thumbs.db
 !.yarn/versions
 .pnp.*
 
+# Docker Services
+services
+
 # Project Specific
 # apps/**/
 # packages/**/
