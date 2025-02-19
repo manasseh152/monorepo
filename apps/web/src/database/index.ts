@@ -1,11 +1,10 @@
 import Dexie, { type Table } from 'dexie';
 
-import type { NoteId, UserId } from '@/database/utils';
-import type { Note, User } from '@/database/schema';
+import type { NoteId } from '@/database/utils';
+import type { Note } from '@/database/schema';
 
 export class Database extends Dexie {
-    users: Table<User, UserId>;
-    notes: Table<Note, NoteId>;
+    public notes: Table<Note, NoteId>;
 
     /**
      * # Schema Syntax
@@ -20,11 +19,9 @@ export class Database extends Dexie {
         super('Database');
 
         this.version(1).stores({
-            users: '&userId, username, email, createdAt, createdBy, updatedAt, updatedBy, deletedAt, deletedBy',
-            notes: '&noteId, title, content, createdAt, createdBy, updatedAt, updatedBy, deletedAt, deletedBy',
+            notes: '&noteId, title, content, createdAt, updatedAt, deletedAt',
         });
 
-        this.users = this.table('users');
         this.notes = this.table('notes');
     }
 }

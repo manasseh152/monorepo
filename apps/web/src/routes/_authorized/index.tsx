@@ -4,12 +4,20 @@ import { useLiveQuery } from 'dexie-react-hooks';
 import { useCurrentUser } from '@/lib/authentication';
 import { db } from '@/database';
 import { useNoteForm } from '@/forms/create-note';
+import { queryOptions, useQuery } from '@tanstack/react-query';
+import { client } from '@/lib/api';
 
 export const Route = createFileRoute('/_authorized/')({
     component: RouteComponent,
 });
 
-function RouteComponent() {
+const indexQeuryOptions = () =>
+    queryOptions({
+        queryKey: ['index'],
+        queryFn: () => client.index.get(),
+    });
+
+export function RouteComponent() {
     const currentUser = useCurrentUser(true);
 
     const notes = useLiveQuery(
@@ -17,9 +25,18 @@ function RouteComponent() {
         [currentUser.userId],
     );
 
+    const indexQuery = useQuery(indexQeuryOptions());
+
     return (
         <section className="flex flex-col p-4">
-            <h2 className="text-xl font-bold mb-2">Your Notes</h2>
+            <header className="flex justify-between items-center">
+                <h2 className="text-xl font-bold mb-2">Your Notes</h2>
+                <p className="text-sm text-muted-foreground">
+                    {indexQuery.isLoading
+                        ? 'Loading...'
+                        : `API Response: ${indexQuery.data?.data?.message}`}
+                </p>
+            </header>
             <CreateNote />
             <div className=" overflow-y-auto">
                 <ul className="flex flex-col gap-4">
