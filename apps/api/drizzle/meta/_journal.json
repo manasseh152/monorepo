@@ -8,6 +8,20 @@
       "when": 1739823237840,
       "tag": "0000_amusing_tarot",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1739998294784,
+      "tag": "0001_ancient_changeling",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1739998569823,
+      "tag": "0002_petite_dragon_lord",
+      "breakpoints": true
     }
   ]
 }
