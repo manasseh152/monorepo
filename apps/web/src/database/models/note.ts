@@ -1,24 +1,18 @@
 import type { Note, NoteInsert } from '@/database/schema';
 
 import { NoteId, generateUUID } from '@/database/utils';
-import { getCurrentUser } from '@/lib/authentication';
 import { db } from '@/database';
 
 export async function createNote(note: NoteInsert): Promise<Note> {
-    const currentUser = getCurrentUser(true);
-
     const noteId = NoteId(generateUUID());
-    const createdAt = new Date();
+    const createdAt = Date.now();
 
     const newNote: Note = {
         noteId,
         ...note,
         createdAt,
-        createdBy: currentUser.userId,
         updatedAt: null,
-        updatedBy: null,
         deletedAt: null,
-        deletedBy: null,
     };
 
     await db.notes.add(newNote);
@@ -38,7 +32,7 @@ export async function updateNote(
     noteId: NoteId,
     note: Partial<NoteInsert>,
 ): Promise<Note> {
-    const updatedAt = new Date();
+    const updatedAt = Date.now();
 
     await db.notes.update(noteId, {
         ...note,

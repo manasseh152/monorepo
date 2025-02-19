@@ -18,12 +18,14 @@ export function getCurrentUser(shouldThrow: boolean | undefined): User | null {
     return currentUser;
 }
 
+/**
+ * Check if the user is authenticated.
+ *
+ * @todo Implement the actual authentication logic.
+ */
 export function isAuthenticated() {
-    const currentUser = getCurrentUser();
-
-    console.log(currentUser);
-
-    return currentUser !== null;
+    // TODO: Implement the actual authentication logic.
+    return true;
 }
 
 export function logout() {

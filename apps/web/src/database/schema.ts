@@ -1,12 +1,9 @@
 import type { NoteId, UserId } from '@/database/utils';
 
 export type SystemFields = {
-    createdAt: Date;
-    createdBy: UserId;
-    updatedAt: Date | null;
-    updatedBy: UserId | null;
-    deletedAt: Date | null;
-    deletedBy: UserId | null;
+    createdAt: number;
+    updatedAt: number | null;
+    deletedAt: number | null;
 };
 
 export type User = {
