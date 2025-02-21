@@ -1,12 +1,12 @@
-import type { User } from '@/database/schema';
-
 import { getDefaultStore } from 'jotai/vanilla';
 
 import { currentUserAtom } from '@/stores/current-user';
 
-export function getCurrentUser(shouldThrow: true): User;
-export function getCurrentUser(shouldThrow?: false): User | null;
-export function getCurrentUser(shouldThrow: boolean | undefined): User | null {
+export function getCurrentUser(shouldThrow: true): string;
+export function getCurrentUser(shouldThrow?: false): string | null;
+export function getCurrentUser(
+    shouldThrow: boolean | undefined,
+): string | null {
     const store = getDefaultStore();
 
     const currentUser = store.get(currentUserAtom);
@@ -24,8 +24,9 @@ export function getCurrentUser(shouldThrow: boolean | undefined): User | null {
  * @todo Implement the actual authentication logic.
  */
 export function isAuthenticated() {
-    // TODO: Implement the actual authentication logic.
-    return true;
+    const store = getDefaultStore();
+
+    return store.get(currentUserAtom) !== null;
 }
 
 export function logout() {
@@ -34,15 +35,17 @@ export function logout() {
     store.set(currentUserAtom, null);
 }
 
-export function login(user: User) {
+export function login(username: string) {
     const store = getDefaultStore();
 
-    store.set(currentUserAtom, user);
+    store.set(currentUserAtom, username);
 }
 
-export function useCurrentUser(shouldThrow: true): User;
-export function useCurrentUser(shouldThrow?: false): User | null;
-export function useCurrentUser(shouldThrow: boolean | undefined): User | null {
+export function useCurrentUser(shouldThrow: true): string;
+export function useCurrentUser(shouldThrow?: false): string | null;
+export function useCurrentUser(
+    shouldThrow: boolean | undefined,
+): string | null {
     const store = getDefaultStore();
 
     const currentUser = store.get(currentUserAtom);

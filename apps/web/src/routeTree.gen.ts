@@ -14,7 +14,6 @@ import { Route as rootRoute } from './routes/__root'
 import { Route as UnauthorizedImport } from './routes/_unauthorized'
 import { Route as AuthorizedImport } from './routes/_authorized'
 import { Route as AuthorizedIndexImport } from './routes/_authorized/index'
-import { Route as UnauthorizedRegisterIndexImport } from './routes/_unauthorized/register/index'
 import { Route as UnauthorizedLoginIndexImport } from './routes/_unauthorized/login/index'
 
 // Create/Update Routes
@@ -33,12 +32,6 @@ const AuthorizedIndexRoute = AuthorizedIndexImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => AuthorizedRoute,
-} as any)
-
-const UnauthorizedRegisterIndexRoute = UnauthorizedRegisterIndexImport.update({
-  id: '/register/',
-  path: '/register/',
-  getParentRoute: () => UnauthorizedRoute,
 } as any)
 
 const UnauthorizedLoginIndexRoute = UnauthorizedLoginIndexImport.update({
@@ -79,13 +72,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof UnauthorizedLoginIndexImport
       parentRoute: typeof UnauthorizedImport
     }
-    '/_unauthorized/register/': {
-      id: '/_unauthorized/register/'
-      path: '/register'
-      fullPath: '/register'
-      preLoaderRoute: typeof UnauthorizedRegisterIndexImport
-      parentRoute: typeof UnauthorizedImport
-    }
   }
 }
 
@@ -105,12 +91,10 @@ const AuthorizedRouteWithChildren = AuthorizedRoute._addFileChildren(
 
 interface UnauthorizedRouteChildren {
   UnauthorizedLoginIndexRoute: typeof UnauthorizedLoginIndexRoute
-  UnauthorizedRegisterIndexRoute: typeof UnauthorizedRegisterIndexRoute
 }
 
 const UnauthorizedRouteChildren: UnauthorizedRouteChildren = {
   UnauthorizedLoginIndexRoute: UnauthorizedLoginIndexRoute,
-  UnauthorizedRegisterIndexRoute: UnauthorizedRegisterIndexRoute,
 }
 
 const UnauthorizedRouteWithChildren = UnauthorizedRoute._addFileChildren(
@@ -121,14 +105,12 @@ export interface FileRoutesByFullPath {
   '': typeof UnauthorizedRouteWithChildren
   '/': typeof AuthorizedIndexRoute
   '/login': typeof UnauthorizedLoginIndexRoute
-  '/register': typeof UnauthorizedRegisterIndexRoute
 }
 
 export interface FileRoutesByTo {
   '': typeof UnauthorizedRouteWithChildren
   '/': typeof AuthorizedIndexRoute
   '/login': typeof UnauthorizedLoginIndexRoute
-  '/register': typeof UnauthorizedRegisterIndexRoute
 }
 
 export interface FileRoutesById {
@@ -137,21 +119,19 @@ export interface FileRoutesById {
   '/_unauthorized': typeof UnauthorizedRouteWithChildren
   '/_authorized/': typeof AuthorizedIndexRoute
   '/_unauthorized/login/': typeof UnauthorizedLoginIndexRoute
-  '/_unauthorized/register/': typeof UnauthorizedRegisterIndexRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '' | '/' | '/login' | '/register'
+  fullPaths: '' | '/' | '/login'
   fileRoutesByTo: FileRoutesByTo
-  to: '' | '/' | '/login' | '/register'
+  to: '' | '/' | '/login'
   id:
     | '__root__'
     | '/_authorized'
     | '/_unauthorized'
     | '/_authorized/'
     | '/_unauthorized/login/'
-    | '/_unauthorized/register/'
   fileRoutesById: FileRoutesById
 }
 
@@ -188,8 +168,7 @@ export const routeTree = rootRoute
     "/_unauthorized": {
       "filePath": "_unauthorized.tsx",
       "children": [
-        "/_unauthorized/login/",
-        "/_unauthorized/register/"
+        "/_unauthorized/login/"
       ]
     },
     "/_authorized/": {
@@ -198,10 +177,6 @@ export const routeTree = rootRoute
     },
     "/_unauthorized/login/": {
       "filePath": "_unauthorized/login/index.tsx",
-      "parent": "/_unauthorized"
-    },
-    "/_unauthorized/register/": {
-      "filePath": "_unauthorized/register/index.tsx",
       "parent": "/_unauthorized"
     }
   }
