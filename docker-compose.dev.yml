@@ -1,5 +1,6 @@
 services:
     web:
+        container_name: repo_apps_web
         build:
             context: .
             dockerfile: Dockerfile.dev.web
@@ -12,6 +13,7 @@ services:
             - PORT=5173
 
     api:
+        container_name: repo_apps_api
         build:
             context: .
             dockerfile: Dockerfile.dev.api
@@ -24,6 +26,7 @@ services:
             - PORT=3000
 
     database:
+        container_name: repo_services_database
         image: postgres:17.3
         ports:
             - '5433:5432'
@@ -35,11 +38,13 @@ services:
             - POSTGRES_DB=notes
 
     kvstore:
+        container_name: repo_services_kvstore
         image: redis:6.2.5
         ports:
             - '6379:6379'
 
     dbgate:
+        container_name: repo_services_dbgate
         image: dbgate/dbgate:latest
         ports:
             - '3001:3000'

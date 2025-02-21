@@ -2,9 +2,9 @@
     "name": "@repo/api",
     "version": "1.0.50",
     "scripts": {
-        "dev": "bun run --watch src/index.ts",
-        "db:generate:migration": "bun drizzle-kit generate",
-        "db:run:migration": "bun drizzle-kit migrate"
+        "dev": "bun run --watch src/main.ts",
+        "db:migration:generate": "bun drizzle-kit generate",
+        "db:migration:run": "bun drizzle-kit migrate"
     },
     "dependencies": {
         "@elysiajs/cors": "^1.2.0",
