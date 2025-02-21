@@ -6,8 +6,11 @@ export const envSchema = z.object({
         .default('development'),
     VITE_DEV_SERVER_HOST: z.string().default('localhost'),
     VITE_DEV_SERVER_PORT: z.coerce.number().default(5173),
-    VITE_APP_BASE_URL: z.string().url().default('http://localhost:5173'),
-    VITE_API_BASE_URL: z.string().url().default('http://localhost:3000'),
+    VITE_APP_BASE_URL: z.string().url().default('https://local.bitbreeze.nl'),
+    VITE_API_BASE_URL: z
+        .string()
+        .url()
+        .default('https://local.bitbreeze.nl/api'),
 });
 
 export type Env = z.infer<typeof envSchema>;

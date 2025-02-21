@@ -7,6 +7,10 @@
         "packages/*"
     ],
     "scripts": {
+        "dev:start": "docker compose -f docker-compose.dev.yml up --build",
+        "dev:db:migration:generate": "./commands/helper.sh docker-compose.dev.yml api apps/api \"bun run db:migration:generate\"",
+        "dev:db:migration:run": "./commands/helper.sh docker-compose.dev.yml api apps/api \"bun run db:migration:run\"",
+        "dev:db:migrate": "bun run dev:db:migration:generate && bun run dev:db:migration:run",
         "format": "prettier --write ."
     },
     "devDependencies": {

@@ -2,14 +2,22 @@
     "name": "@repo/api",
     "version": "1.0.50",
     "scripts": {
-        "dev": "bun run --watch src/index.ts"
+        "dev": "bun run --watch src/main.ts",
+        "db:migration:generate": "bun drizzle-kit generate",
+        "db:migration:run": "bun drizzle-kit migrate"
     },
     "dependencies": {
-        "elysia": "latest"
+        "@elysiajs/cors": "^1.2.0",
+        "@elysiajs/swagger": "^1.2.0",
+        "dotenv": "^16.4.7",
+        "drizzle-orm": "^0.39.3",
+        "elysia": "latest",
+        "postgres": "^3.4.5"
     },
     "devDependencies": {
         "@repo/typescript-config": "workspace:*",
-        "bun-types": "latest"
+        "bun-types": "latest",
+        "drizzle-kit": "^0.30.4"
     },
     "module": "src/index.js",
     "exports": {

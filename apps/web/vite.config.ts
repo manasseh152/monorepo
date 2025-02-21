@@ -3,11 +3,13 @@ import { VitePWA } from 'vite-plugin-pwa';
 import { defineConfig } from 'vite';
 import { resolve } from 'path';
 
+import Tailwindcss from '@tailwindcss/vite';
 import React from '@vitejs/plugin-react';
 
 // https://vitejs.dev/config/
 export default defineConfig({
     plugins: [
+        Tailwindcss(),
         TanStackRouterVite(),
         React(),
         VitePWA({
@@ -49,6 +51,7 @@ export default defineConfig({
     },
     /* I prefer to the environment variables in the .env file. */
     server: {
+        allowedHosts: ['localhost', 'local.bitbreeze.nl', 'app.bitbreeze.nl'],
         host: 'localhost',
         port: 5173,
         proxy: {

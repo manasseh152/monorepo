@@ -1,7 +1,10 @@
 {
     "extends": "@repo/typescript-config/base.json",
     "compilerOptions": {
-        // Add your project-specific configurations here
+        "baseUrl": ".",
+        "paths": {
+            "@/*": ["./src/*"]
+        }
     },
     "include": ["src"]
 }
