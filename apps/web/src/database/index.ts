@@ -1,10 +1,7 @@
 import Dexie, { type Table } from 'dexie';
 
-import type { NoteId } from '@/database/utils';
-import type { Note } from '@/database/schema';
-
 export class Database extends Dexie {
-    public notes: Table<Note, NoteId>;
+    public readonly example: Table<{ id: number; name: string }>;
 
     /**
      * # Schema Syntax
@@ -19,10 +16,10 @@ export class Database extends Dexie {
         super('Database');
 
         this.version(1).stores({
-            notes: '&noteId, title, content, createdAt, updatedAt, deletedAt',
+            example: '++id, name',
         });
 
-        this.notes = this.table('notes');
+        this.example = this.table('example');
     }
 }
 

@@ -11,139 +11,37 @@
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
-import { Route as UnauthorizedImport } from './routes/_unauthorized'
-import { Route as AuthorizedImport } from './routes/_authorized'
-import { Route as AuthorizedIndexImport } from './routes/_authorized/index'
-import { Route as UnauthorizedLoginIndexImport } from './routes/_unauthorized/login/index'
 
 // Create/Update Routes
-
-const UnauthorizedRoute = UnauthorizedImport.update({
-  id: '/_unauthorized',
-  getParentRoute: () => rootRoute,
-} as any)
-
-const AuthorizedRoute = AuthorizedImport.update({
-  id: '/_authorized',
-  getParentRoute: () => rootRoute,
-} as any)
-
-const AuthorizedIndexRoute = AuthorizedIndexImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => AuthorizedRoute,
-} as any)
-
-const UnauthorizedLoginIndexRoute = UnauthorizedLoginIndexImport.update({
-  id: '/login/',
-  path: '/login/',
-  getParentRoute: () => UnauthorizedRoute,
-} as any)
 
 // Populate the FileRoutesByPath interface
 
 declare module '@tanstack/react-router' {
-  interface FileRoutesByPath {
-    '/_authorized': {
-      id: '/_authorized'
-      path: ''
-      fullPath: ''
-      preLoaderRoute: typeof AuthorizedImport
-      parentRoute: typeof rootRoute
-    }
-    '/_unauthorized': {
-      id: '/_unauthorized'
-      path: ''
-      fullPath: ''
-      preLoaderRoute: typeof UnauthorizedImport
-      parentRoute: typeof rootRoute
-    }
-    '/_authorized/': {
-      id: '/_authorized/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof AuthorizedIndexImport
-      parentRoute: typeof AuthorizedImport
-    }
-    '/_unauthorized/login/': {
-      id: '/_unauthorized/login/'
-      path: '/login'
-      fullPath: '/login'
-      preLoaderRoute: typeof UnauthorizedLoginIndexImport
-      parentRoute: typeof UnauthorizedImport
-    }
-  }
+  interface FileRoutesByPath {}
 }
 
 // Create and export the route tree
 
-interface AuthorizedRouteChildren {
-  AuthorizedIndexRoute: typeof AuthorizedIndexRoute
-}
+export interface FileRoutesByFullPath {}
 
-const AuthorizedRouteChildren: AuthorizedRouteChildren = {
-  AuthorizedIndexRoute: AuthorizedIndexRoute,
-}
-
-const AuthorizedRouteWithChildren = AuthorizedRoute._addFileChildren(
-  AuthorizedRouteChildren,
-)
-
-interface UnauthorizedRouteChildren {
-  UnauthorizedLoginIndexRoute: typeof UnauthorizedLoginIndexRoute
-}
-
-const UnauthorizedRouteChildren: UnauthorizedRouteChildren = {
-  UnauthorizedLoginIndexRoute: UnauthorizedLoginIndexRoute,
-}
-
-const UnauthorizedRouteWithChildren = UnauthorizedRoute._addFileChildren(
-  UnauthorizedRouteChildren,
-)
-
-export interface FileRoutesByFullPath {
-  '': typeof UnauthorizedRouteWithChildren
-  '/': typeof AuthorizedIndexRoute
-  '/login': typeof UnauthorizedLoginIndexRoute
-}
-
-export interface FileRoutesByTo {
-  '': typeof UnauthorizedRouteWithChildren
-  '/': typeof AuthorizedIndexRoute
-  '/login': typeof UnauthorizedLoginIndexRoute
-}
+export interface FileRoutesByTo {}
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
-  '/_authorized': typeof AuthorizedRouteWithChildren
-  '/_unauthorized': typeof UnauthorizedRouteWithChildren
-  '/_authorized/': typeof AuthorizedIndexRoute
-  '/_unauthorized/login/': typeof UnauthorizedLoginIndexRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '' | '/' | '/login'
+  fullPaths: never
   fileRoutesByTo: FileRoutesByTo
-  to: '' | '/' | '/login'
-  id:
-    | '__root__'
-    | '/_authorized'
-    | '/_unauthorized'
-    | '/_authorized/'
-    | '/_unauthorized/login/'
+  to: never
+  id: '__root__'
   fileRoutesById: FileRoutesById
 }
 
-export interface RootRouteChildren {
-  AuthorizedRoute: typeof AuthorizedRouteWithChildren
-  UnauthorizedRoute: typeof UnauthorizedRouteWithChildren
-}
+export interface RootRouteChildren {}
 
-const rootRouteChildren: RootRouteChildren = {
-  AuthorizedRoute: AuthorizedRouteWithChildren,
-  UnauthorizedRoute: UnauthorizedRouteWithChildren,
-}
+const rootRouteChildren: RootRouteChildren = {}
 
 export const routeTree = rootRoute
   ._addFileChildren(rootRouteChildren)
@@ -154,30 +52,7 @@ export const routeTree = rootRoute
   "routes": {
     "__root__": {
       "filePath": "__root.tsx",
-      "children": [
-        "/_authorized",
-        "/_unauthorized"
-      ]
-    },
-    "/_authorized": {
-      "filePath": "_authorized.tsx",
-      "children": [
-        "/_authorized/"
-      ]
-    },
-    "/_unauthorized": {
-      "filePath": "_unauthorized.tsx",
-      "children": [
-        "/_unauthorized/login/"
-      ]
-    },
-    "/_authorized/": {
-      "filePath": "_authorized/index.tsx",
-      "parent": "/_authorized"
-    },
-    "/_unauthorized/login/": {
-      "filePath": "_unauthorized/login/index.tsx",
-      "parent": "/_unauthorized"
+      "children": []
     }
   }
 }
