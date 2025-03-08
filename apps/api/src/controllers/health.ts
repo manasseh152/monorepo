@@ -1,6 +1,6 @@
 import { Elysia, t } from 'elysia';
 
-export const health = new Elysia({
+export const healthController = new Elysia({
     prefix: '/health',
 })
     .model({

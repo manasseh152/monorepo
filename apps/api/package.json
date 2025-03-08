@@ -4,7 +4,9 @@
     "scripts": {
         "dev": "bun run --watch src/main.ts",
         "db:migration:generate": "bun drizzle-kit generate",
-        "db:migration:run": "bun drizzle-kit migrate"
+        "db:migration:run": "bun drizzle-kit migrate",
+        "db:seed:run": "bun src/database/seed.ts",
+        "db:studio": "bun drizzle-kit studio"
     },
     "dependencies": {
         "@elysiajs/cors": "^1.2.0",
@@ -15,6 +17,7 @@
         "postgres": "^3.4.5"
     },
     "devDependencies": {
+        "@faker-js/faker": "^9.5.0",
         "@repo/typescript-config": "workspace:*",
         "bun-types": "latest",
         "drizzle-kit": "^0.30.4"
