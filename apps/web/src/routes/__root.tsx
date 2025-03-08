@@ -1,8 +1,5 @@
-import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
-import { TanStackRouterDevtools } from '@tanstack/router-devtools';
+import { Devtools } from '@/components/devtools';
 import { Outlet, createRootRoute } from '@tanstack/react-router';
-
-import PWABadge from '@/components/pwa-check';
 
 export const Route = createRootRoute({
     component: RootComponent,
@@ -11,13 +8,8 @@ export const Route = createRootRoute({
 function RootComponent() {
     return (
         <>
-            {/* Router */}
             <Outlet />
-            {/* PWA */}
-            <PWABadge />
-            {/* Devtools */}
-            <ReactQueryDevtools />
-            <TanStackRouterDevtools />
+            <Devtools />
         </>
     );
 }
